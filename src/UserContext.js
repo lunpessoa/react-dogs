@@ -1,6 +1,6 @@
 import React from 'react'
 import { TOKEN_POST, USER_GET, TOKEN_VALIDATE_POST } from './api'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const UserContext = React.createContext();
 
@@ -18,7 +18,9 @@ export const UserStorage = ({children}) => {
     setLoading(false);
     window.localStorage.removeItem('token');
     navigate('/login');
-  }, [navigate])
+  }, 
+    [navigate],
+  );
 
   async function getUser(token){
     const {url, options} = USER_GET(token)
@@ -63,6 +65,8 @@ export const UserStorage = ({children}) => {
         } finally {
           setLoading(false);
         }
+      } else {
+          setLogin(false);
       }
     } 
     autoLogin();
