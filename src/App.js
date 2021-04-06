@@ -14,18 +14,20 @@ import NotFound from './Components/NotFound'
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
-      <UserStorage>
-        <Header />
-          <Routes>
+        <UserStorage>
+          <Header />
+          <main className="appBody">
+            <Routes>
               <Route path="/" element={<Home />} />
               <Route path="login/*" element={<Login />} />
               <Route path="foto/:id" element={<Photo />} />
               <Route path="perfil/:user" element={<UserProfile />} />
               <ProtectedRoute path="conta/*" element={<User />} />
               <Route path="*" element={<NotFound />} />
-          </Routes>
+            </Routes>
+          </main>
           <Footer />
         </UserStorage>
       </BrowserRouter>
